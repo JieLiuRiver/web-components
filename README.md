@@ -20,10 +20,11 @@ Web Component是一套由浏览器原生支持的组件化技术，旨在通过�
 - **2023年至今**：新增声明式Shadow DOM、Element Internals API等特性，支持表单集成和跨根ARIA，推动企业级应用。
 
 ### 企业级应用案例
-- **YouTube**：早期采用者，使用自定义元素如`ytd-video-preview`构建界面。
+- **YouTube**：是最早采用 Web Components 的公司之一，多年来一直使用这项技术构建其体验。检查源代码，您会看到各种自定义元素，从ytd-video-preview到iron-ally-announcer
 - **Adobe Photoshop**：基于Lit框架将桌面端功能迁移至浏览器。
 - **微软**：Fluent UI组件库基于FAST框架，应用于Bing、VS Code等产品，性能提升30%-50%。
 - **SpaceX**：在飞船控制界面中使用Web Component。
+https://eisenbergeffect.medium.com/2023-state-of-web-components-c8feb21d4f16
 
 ---
 
@@ -70,3 +71,9 @@ Web Component是一套由浏览器原生支持的组件化技术，旨在通过�
 ### 当前局限
 - **SSR支持不足**：Web Component的 hydration 机制尚不完善，需依赖Polyfill或框架适配。
 - **学习曲线**：原生API较为底层，需结合Lit等工具提升开发效率。
+
+
+1. https://css-tricks.com/styling-a-web-component/
+2. https://arewebcomponentsathingyet.com/
+3. https://blog.logrocket.com/web-components-vs-react/
+4. https://blog.logrocket.com/lit-vs-react-comparison-guide/
