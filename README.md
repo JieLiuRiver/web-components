@@ -93,3 +93,62 @@ https://eisenbergeffect.medium.com/2023-state-of-web-components-c8feb21d4f16
 
 #### 资源导航
 - [Web Components 生态追踪](https://arewebcomponentsathingyet.com/) - 实时更新浏览器支持度与企业案例
+
+---
+
+## 三、Web Component 基础架构（新增章节）
+### 技术栈组成
+| 技术名称         | 类比框架概念       | 核心作用                  | 示例代码片段              |
+|------------------|--------------------|-------------------------|-------------------------|
+| **Custom Elements** | React组件类        | 定义可复用的HTML标签      | `class MyButton extends HTMLElement {...}` |
+| **Shadow DOM**     | Vue的scoped scss   | 创建隔离的样式与DOM空间    | `this.attachShadow({mode: 'open'})` |
+| **HTML Templates** | Angular的ng-template | 声明可复用的HTML模板片段   | `<template id="user-card">...</template>` |
+
+### 生命周期方法
+```javascript
+class DemoElement extends HTMLElement {
+  // 元素首次插入DOM时触发（类似React的componentDidMount）
+  connectedCallback() { ... }
+  
+  // 元素属性变化时触发（类似Vue的watch）
+  attributeChangedCallback(name, oldVal, newVal) { ... }
+  
+  // 元素从DOM移除时触发（类似Angular的ngOnDestroy）
+  disconnectedCallback() { ... }
+}
+```
+
+<!-- 定义模板 -->
+<template id="welcome-card">
+  <style>
+    /* 样式仅作用于当前组件 */
+    .card { padding: 20px; background: #f0f0f0; }
+  </style>
+  <div class="card">
+    <h2><slot name="title">默认标题</slot></h2>
+    <p><slot name="content">默认内容</slot></p>
+  </div>
+</template>
+
+<script>
+// 注册自定义元素
+class WelcomeCard extends HTMLElement {
+  constructor() {
+    super();
+    // 挂载Shadow DOM
+    const shadow = this.attachShadow({mode: 'open'});
+    // 克隆模板
+    const template = document.getElementById('welcome-card').content;
+    shadow.appendChild(template.cloneNode(true));
+  }
+}
+
+// 注册为HTML标签（必须包含短横线）
+customElements.define('welcome-card', WelcomeCard);
+</script>
+
+<!-- 使用组件 -->
+<welcome-card>
+  <span slot="title">欢迎新人!</span>
+  <span slot="content">这是你的第一个Web Component示例</span>
+</welcome-card>
