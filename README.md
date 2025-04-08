@@ -20,10 +20,16 @@ Web Component是一套由浏览器原生支持的组件化技术，旨在通过�
 - **2023年至今**：新增声明式Shadow DOM、Element Internals API等特性，支持表单集成和跨根ARIA，推动企业级应用。
 
 ### 企业级应用案例
-- **YouTube**：是最早采用 Web Components 的公司之一，多年来一直使用这项技术构建其体验。检查源代码，您会看到各种自定义元素，从ytd-video-preview到iron-ally-announcer
+- **YouTube**：是最早采用 Web Components 的公司之一，多年以来一直使用这项技术构建其体验。检查源代码，您会看到各种自定义元素，从ytd-video-preview到iron-ally-announcer
 - **Adobe Photoshop**：基于Lit框架将桌面端功能迁移至浏览器。
 - **微软**：Fluent UI组件库基于FAST框架，应用于Bing、VS Code等产品，性能提升30%-50%。
 - **SpaceX**：在飞船控制界面中使用Web Component。
+
+### 2023 年关键进展
+- **声明式 Shadow DOM**：支持服务器端渲染(SSR)，可通过`<template shadowroot>`直接序列化Shadow DOM
+- **Element Internals API**：实现原生表单控件集成，支持自定义元素的表单验证与提交
+- **跨根 ARIA**：解决 Shadow DOM 中无障碍树断裂问题，提升组件可访问性
+- **CSS 作用域扩展**：新增 `@scope` 规则，提供更精细的样式控制（替代 `:host` 的局限）
 https://eisenbergeffect.medium.com/2023-state-of-web-components-c8feb21d4f16
 
 ---
@@ -72,8 +78,18 @@ https://eisenbergeffect.medium.com/2023-state-of-web-components-c8feb21d4f16
 - **SSR支持不足**：Web Component的 hydration 机制尚不完善，需依赖Polyfill或框架适配。
 - **学习曲线**：原生API较为底层，需结合Lit等工具提升开发效率。
 
+### 生态演进方向（新增小节）
+- **框架整合**：Vue 3.4+ 已原生支持自定义元素，React 19 正在实验`use()` hook 加载 Web Components
+- **工具链完善**：Vite 4.3+ 新增专用插件，支持热更新和SSR转换
+- **设计系统融合**：Adobe Spectrum 2、SAP UI5 等主流设计系统开始提供Web Component版本
 
-1. https://css-tricks.com/styling-a-web-component/
-2. https://arewebcomponentsathingyet.com/
-3. https://blog.logrocket.com/web-components-vs-react/
-4. https://blog.logrocket.com/lit-vs-react-comparison-guide/
+---
+
+### 参考资料
+#### 技术文章
+- [Web Component 样式指南](https://css-tricks.com/styling-a-web-component/) - CSS Tricks 关于样式封装的深度解析
+- [Web Components vs React 框架对比](https://blog.logrocket.com/web-components-vs-react/) - LogRocket 的性能与生态比较
+- [Lit vs React 开发体验对比](https://blog.logrocket.com/lit-vs-react-comparison-guide/) - 模板语法与状态管理差异分析
+
+#### 资源导航
+- [Web Components 生态追踪](https://arewebcomponentsathingyet.com/) - 实时更新浏览器支持度与企业案例
